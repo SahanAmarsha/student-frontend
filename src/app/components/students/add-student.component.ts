@@ -1,5 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {StudentService} from '../../services/student.service';
+
 
 @Component({
   selector: 'app-add-student',
@@ -9,9 +11,22 @@ export class AddStudentComponent implements OnInit{
 
   myForm: FormGroup;
 
+  constructor(
+    private studentService: StudentService
+  ) { }
+
   // tslint:disable-next-line:typedef
-  onSubmit()
+  async onSubmit()
   {
+    const newStudent =
+      {
+        idNum: this.myForm.value.id,
+        name: this.myForm.value.name,
+        science: this.myForm.value.science,
+        maths: this.myForm.value.maths,
+        english: this.myForm.value.english
+      };
+
     if (this.myForm.value.science > 100 || this.myForm.value.science < 0)
     {
       alert('Please enter a valid mark for science');
@@ -23,8 +38,23 @@ export class AddStudentComponent implements OnInit{
       alert('Please enter a valid mark for english');
     } else
     {
-      console.log('Student created Successful');
-      this.myForm.reset();
+
+      try{
+        await this.studentService.addStudent(newStudent).subscribe((res: any) => {
+          if (!res.ok)
+          {
+            alert(res.message);
+          } else
+          {
+            this.myForm.reset();
+            alert(res.message);
+          }
+
+        });
+      } catch (e) {
+        alert(e);
+      }
+
     }
 
   }

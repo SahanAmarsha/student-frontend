@@ -6,25 +6,25 @@ import { HttpClient } from '@angular/common/http';
 })
 
 export class StudentService {
-  apiEndPoint  = 'http://localhost:3000';
+  apiEndPoint  = 'http://localhost:3000/student';
 
   constructor(
     private http: HttpClient
   ) { }
 
-  getTasks(): any{
-    return this.http.get(this.apiEndPoint + '/tasks');
+  getStudents(): any{
+    return this.http.get(this.apiEndPoint + '/display');
   }
 
-  addTask(newTask: any): any {
-    return this.http.post(this.apiEndPoint + '/tasks', newTask);
+  addStudent(newStudent: any): any {
+    return this.http.post(this.apiEndPoint + '/add', newStudent);
   }
 
-  updateTask(updatedTask: any): any {
-    return this.http.put(this.apiEndPoint + '/tasks/' + updatedTask._id, updatedTask);
+  updateStudent(updatedStudent: any): any {
+    return this.http.put(this.apiEndPoint + '/add/' + updatedStudent._id, updatedStudent);
   }
 
-  deleteTask(taskId: any): any {
-    return this.http.delete(this.apiEndPoint + '/tasks/' + taskId);
+  deleteStudent(studentId: any): any {
+    return this.http.delete(this.apiEndPoint + '/tasks/' + studentId);
   }
 }

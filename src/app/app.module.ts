@@ -8,7 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {HeaderComponent} from './components/shared/header.component';
 import {AddStudentComponent} from './components/students/add-student.component';
 import {DisplayStudentComponent} from './components/students/display-student.component';
-import {TodoListComponent} from './components/todo-list/todo-list.component';
+
 
 @NgModule({
   declarations: [
@@ -16,7 +16,6 @@ import {TodoListComponent} from './components/todo-list/todo-list.component';
     AddStudentComponent,
     DisplayStudentComponent,
     HeaderComponent,
-    TodoListComponent
   ],
   imports: [
     BrowserModule,

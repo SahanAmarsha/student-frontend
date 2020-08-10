@@ -1,1 +1,30 @@
-<h1>Display Students</h1>
+<div class="col-md-8">
+  <br/><br/>
+
+  <h2>Student Details</h2>
+
+  <hr>
+
+  <table class="table table-striped" style="font-size: 18px">
+    <thead class="thead-dark">
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Student ID</th>
+      <th scope="col">Student Name</th>
+      <th scope="col">Science</th>
+      <th scope="col">English</th>
+      <th scope="col">Maths</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let student of studentsList; let i = index">
+      <td>{{i+1}}</td>
+      <td>{{student.studentId}}</td>
+      <td>{{student.studentName}}</td>
+      <td>{{student.science}}</td>
+      <td>{{student.english}}</td>
+      <td>{{student.maths}}</td>
+    <tr>
+    </tbody>
+  </table>
+</div>
