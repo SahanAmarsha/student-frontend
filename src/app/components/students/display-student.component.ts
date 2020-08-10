@@ -7,8 +7,10 @@ import {StudentService} from '../../services/student.service';
 })
 export class DisplayStudentComponent implements OnInit{
   studentsList = [];
-
+  isClicked = false;
   ngOnInit(): void {
+    this.studentsList = [];
+    this.isClicked = false;
     this.getAllStudents();
   }
 
@@ -18,10 +20,9 @@ export class DisplayStudentComponent implements OnInit{
   }
 
 
-  // tslint:disable-next-line:typedef
-   getAllStudents() {
+  getAllStudents(): void{
     try{
-       this.studentService.getStudents().subscribe((res: any) => {
+      this.studentService.getStudents().subscribe((res: any) => {
         // console.log('My response');
         // console.log(res);
         const students = res.students;
@@ -52,6 +53,33 @@ export class DisplayStudentComponent implements OnInit{
       alert('An Error Occured!');
     }
 
+
+  }
+
+  filter(): void {
+    const newStudentList = [];
+    if ( !this.isClicked )
+    {
+      let total = 0;
+      for (const student of this.studentsList)
+      {
+        total = student.english + student.maths + student.science;
+        console.log(student.english + '+' + student.maths + '+' + student.science + '+' + total);
+        if (total > 250)
+        {
+          newStudentList.push(student);
+        }
+        total = 0;
+      }
+      if (newStudentList.length > 0)
+      {
+        this.studentsList = newStudentList;
+      }
+      this.isClicked = true;
+    } else
+    {
+      this.ngOnInit();
+    }
 
   }
 }

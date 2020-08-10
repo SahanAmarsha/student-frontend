@@ -44,9 +44,9 @@ export class AddStudentComponent implements OnInit{
           if (!res.ok)
           {
             alert(res.message);
+            this.myForm.reset();
           } else
           {
-            this.myForm.reset();
             alert(res.message);
           }
 
