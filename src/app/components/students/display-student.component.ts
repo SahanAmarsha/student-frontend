@@ -1,11 +1,14 @@
 import {Component, OnInit} from '@angular/core';
 import {StudentService} from '../../services/student.service';
+import { faFilter } from '@fortawesome/free-solid-svg-icons'
 
 @Component({
   selector: 'app-add-student',
-  templateUrl: './display-student.component.html'
+  templateUrl: './display-student.component.html',
+  styleUrls: ['./display-student.component.css']
 })
 export class DisplayStudentComponent implements OnInit{
+  faFilter = faFilter;
   studentsList = [];
   isClicked = false;
   ngOnInit(): void {

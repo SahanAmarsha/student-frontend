@@ -5,9 +5,10 @@ import {routing} from './app.routing';
 
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
-import {HeaderComponent} from './components/shared/header.component';
+import {NavbarComponent} from './components/shared/navbar.component';
 import {AddStudentComponent} from './components/students/add-student.component';
 import {DisplayStudentComponent} from './components/students/display-student.component';
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 
 
 @NgModule({
@@ -15,14 +16,15 @@ import {DisplayStudentComponent} from './components/students/display-student.com
     AppComponent,
     AddStudentComponent,
     DisplayStudentComponent,
-    HeaderComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
     routing,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]
